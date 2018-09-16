@@ -32,6 +32,9 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			
+
+			
 			<!-- Para google cloud -->
 			<exclusions>
 	        	<exclusion>
@@ -41,7 +44,20 @@
 	      	</exclusions>
 			
 		</dependency>
-
+		<!-- Para los tests -->
+			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-test</artifactId>
+			    <scope>test</scope>
+			</dependency>
+		<!-- Para los tests -->
+			<dependency>
+			    <groupId>com.h2database</groupId>
+			    <artifactId>h2</artifactId>
+			    <scope>test</scope>
+			    <version>1.4.194</version>
+			</dependency>
+			
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

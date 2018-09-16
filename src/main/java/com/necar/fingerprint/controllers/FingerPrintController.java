@@ -36,7 +36,7 @@ public class FingerPrintController {
 		// TODO: ponerle fecha
 //		fingerPrintLog.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
 		
-		if (FingerPrintTools.analize(matrixWrapper.getMatrix())){			
+		if (FingerPrintTools.isFingerPrint(matrixWrapper.getMatrix())){			
 			fingerPrintLog.setResult(FingerPrintTools.SUCESS_RESULT);					
 			result.put("status", "200");
 			result.put("message", "Data found");

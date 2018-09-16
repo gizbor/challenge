@@ -32,7 +32,7 @@ public class FingerPrintTools {
 		return matrix;
 	}
 
-	public static boolean analize(String[] data) {
+	public static boolean isFingerPrint(String[] data) {
 		System.out.println("Procesando...");
 		char[][] matrix = convertToMatrix(data);
 

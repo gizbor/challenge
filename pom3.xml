@@ -32,8 +32,25 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+			
 
+			
+			<!-- Para google cloud -->
+			<exclusions>
+	        	<exclusion>
+	          		<groupId>org.springframework.boot</groupId>
+	          		<artifactId>spring-boot-starter-tomcat</artifactId>
+	        	</exclusion>
+	      	</exclusions>
+			
+		</dependency>
+		<!-- Para los tests -->
+			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-test</artifactId>
+			    <scope>test</scope>
+			    <version>1.5.3.RELEASE</version>
+			</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -44,6 +61,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Para google cloud -->
+		<dependency>
+		 <groupId>javax.servlet</groupId>
+	      <artifactId>javax.servlet-api</artifactId>
+	      <version>3.1.0</version>
+	      <scope>provided</scope>
+		</dependency>
+		
+		<!-- Para google cloud -->		
+		    <dependency>
+		      <groupId>org.slf4j</groupId>
+		      <artifactId>jul-to-slf4j</artifactId>
+		      <scope>provided</scope>
+		    </dependency>
+		
 	</dependencies>
 
 	<build>
