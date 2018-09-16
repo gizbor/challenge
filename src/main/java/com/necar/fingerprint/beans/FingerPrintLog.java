@@ -19,9 +19,7 @@ public class FingerPrintLog {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name="date")
-	private Date date;
-	
+
 	@Column(name="n_order")
 	private Integer nOrder;
 	
@@ -50,12 +48,7 @@ public class FingerPrintLog {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+
 	public Integer getnOrder() {
 		return nOrder;
 	}

@@ -36,7 +36,6 @@ public class FingerPrintLogRepositoryTest {
 	
 	@Test
 	public void testSaveValidFingerPrint() {
-//		fail("Not yet implemented");
 		FingerPrintLog fingerPrintLog = new FingerPrintLog();
 		
 		fingerPrintLog.setnOrder(6);

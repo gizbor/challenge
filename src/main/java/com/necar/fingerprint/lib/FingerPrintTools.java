@@ -2,12 +2,15 @@ package com.necar.fingerprint.lib;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Date;
-import java.util.Calendar;
 
 import com.necar.fingerprint.beans.FingerPrintLog;
 
-// TODO: documentacion
+/**
+ * Clase que encapsula la lógica pedida de la API.
+ * 
+ * @author Gustavo M. Borello
+ *
+ */
 public class FingerPrintTools {
 	public static final Character SUCESS_RESULT = 'S';
 	public static final Character FAILED_RESULT = 'F';
@@ -19,7 +22,13 @@ public class FingerPrintTools {
 	private static int DOWN_SCANNING_DIR = 2;
 	private static int DIAGONAL_DOWN_RIGHT_SCANNING_DIR = 3;
 	private static int DIAGONAL_DOWN_LEFT_SCANNING_DIR = 4;
-
+	
+	/**
+	 * Convierte la estructura enviada por el cliente String[] en una
+	 * matriz char[][] para facilitar el análisis.
+	 * @param data matriz original String[]
+	 * @return matriz en formato char[][]
+	 */
 	private static char[][] convertToMatrix(String[] data) {
 		char[][] matrix = new char[n_matrix][n_matrix];
 		for (int i = 0; i < n_matrix; i++) {
@@ -31,7 +40,14 @@ public class FingerPrintTools {
 		}
 		return matrix;
 	}
-
+	
+	/**
+	 * Función expuesta al usuario para hacer el análisis
+	 * @param data array de String enviada por el cliente.
+	 * @return true si se encontraron "correctMatchesToReach" repeticiones de
+	 * "correctAdjacentLetterQuant" caracteres dentro de la matriz, false en
+	 * caso contrario.
+	 */
 	public static boolean isFingerPrint(String[] data) {
 		System.out.println("Procesando...");
 		char[][] matrix = convertToMatrix(data);
@@ -65,7 +81,17 @@ public class FingerPrintTools {
 		}
 		return validFingerprint;
 	}
-
+	
+	/**
+	 * Evalua los caracteres de la matriz en la dirección y celda especificada en busqueda
+	 * de caracteres "correctAdjacentLetterQuant" repetidos.
+	 * @param direction dirección de barrido.
+	 * @param matrix matriz analizada.
+	 * @param row celda
+	 * @param col columna
+	 * @return true si se encontró cadena de caracteres "correctAdjacentLetterQuant" de longitud,
+	 * false en caso contrario.
+	 */
 	private static boolean evaluateTo(int direction, char[][] matrix, int row, int col) {
 		char letterToMatch = matrix[row][col];
 		char actualLetter;
@@ -101,7 +127,12 @@ public class FingerPrintTools {
 		}
 		return maxReached;
 	}
-
+	
+	/**
+	 * Deserealiza la matriz en un objeto FingerPrintLog
+	 * @param matrix array de String con los datos de la matriz.
+	 * @return objeto FingerPrintLog
+	 */
 	public static FingerPrintLog createFingerPrintLogBean(String[] matrix) {
 		FingerPrintLog fingerPrintLog = new FingerPrintLog();
 		fingerPrintLog.setnOrder(matrix.length);

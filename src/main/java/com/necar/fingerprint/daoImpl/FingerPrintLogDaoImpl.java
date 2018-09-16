@@ -23,27 +23,6 @@ public class FingerPrintLogDaoImpl implements FingerPrintLogDAO {
 	private FingerPrintLogCrudRepository fingerPrintLogCrudRepository;
 	@Autowired 
 	private FingerPrintLogJpaRepository fingerPrintLogJpaRepository;	
-//	@Override
-//	public Iterable<FingerPrintLog> list() {
-//		Iterable<FingerPrintLog> list= (Iterable<FingerPrintLog>) fingerPrintLogRepository.findAll();
-//		return list;
-//	}
-
-//	@Override
-//	public FingerPrintLog findById(Integer id) {
-//		FingerPrintLog fingerPrint= (FingerPrintLog) session.getCurrentSession().get(FingerPrintLog.class, id);
-//		return fingerPrint;
-//	}
-
-//	@Override
-//	public boolean delete(FingerPrintLog fingerPrintLog) {
-//		try {
-//			session.getCurrentSession().delete(fingerPrintLog);
-//		} catch (Exception ex){
-//			return false;
-//		}
-//		return true;
-//	}
 
 	@Override
 	public boolean save(FingerPrintLog fingerPrintLog) {

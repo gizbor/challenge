@@ -11,6 +11,12 @@ import com.necar.fingerprint.beans.FingerPrintLog;
 import com.necar.fingerprint.dao.FingerPrintLogDAO;
 import com.necar.fingerprint.services.FingerPrintLogService;
 
+/**
+ * Implementación de la interfaz de servicio FingerPrintLogService
+ * @author Gustavo M. Borello
+ *
+ */
+
 @Service
 public class FingerPrintLogServiceImpl implements  FingerPrintLogService {
 	@Autowired

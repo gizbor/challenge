@@ -22,7 +22,7 @@ CREATE USER 'fingerprint'@'localhost' IDENTIFIED BY 'fingerprint';
 CREATE TABLE `finger_print_log` (
   `id` int(11) NOT NULL,
   `n_order` int(11) DEFAULT NULL,
-  `result` char(1) DEFAULT NULL,
+  `result` char(1) DEFAULT NULL,  
   `row_1` varchar(255) DEFAULT NULL,
   `row_2` varchar(255) DEFAULT NULL,
   `row_3` varchar(255) DEFAULT NULL,
