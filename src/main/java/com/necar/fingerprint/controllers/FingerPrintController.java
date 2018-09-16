@@ -1,10 +1,5 @@
 package com.necar.fingerprint.controllers;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +24,6 @@ public class FingerPrintController {
 
 	@PostMapping("/fingerPrint")
 	public ResponseEntity<String> fingerPrint(@RequestBody MatrixWrapper matrixWrapper) {
-		
-		Map<String, String> result = new HashMap<String, String>();
-		
 		// Hidrata un objeto FingerPrintLog a partir de la matriz.
 		FingerPrintLog fingerPrintLog = FingerPrintTools.createFingerPrintLogBean(matrixWrapper.getMatrix());
 		ResponseEntity<String> response;
@@ -41,11 +33,10 @@ public class FingerPrintController {
 		} else {
 			fingerPrintLog.setResult(FingerPrintTools.FAILED_RESULT);
 			response = new ResponseEntity<String>(HttpStatus.FORBIDDEN);
-		}
-		
+		}		
 		fingerPrintLogService.save(fingerPrintLog);	
 		
-		return response;
+	return response;
 	}
 	
 	@PostMapping("/stats")
