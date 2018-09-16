@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,33 +28,24 @@ public class FingerPrintController {
 	private FingerPrintLogService fingerPrintLogService;  
 
 	@PostMapping("/fingerPrint")
-//	public @ResponseBody ResponseEntity<?> fingerPrint(@RequestBody MatrixWrapper mat){
-	public @ResponseBody Map<String, String> fingerPrint(@RequestBody MatrixWrapper matrixWrapper) {
+	public ResponseEntity<String> fingerPrint(@RequestBody MatrixWrapper matrixWrapper) {
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
 		// Hidrata un objeto FingerPrintLog a partir de la matriz.
 		FingerPrintLog fingerPrintLog = FingerPrintTools.createFingerPrintLogBean(matrixWrapper.getMatrix());
-		// TODO: ponerle fecha
-//		fingerPrintLog.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
-		
+		ResponseEntity<String> response;
 		if (FingerPrintTools.isFingerPrint(matrixWrapper.getMatrix())){			
 			fingerPrintLog.setResult(FingerPrintTools.SUCESS_RESULT);					
-			result.put("status", "200");
-			result.put("message", "Data found");
+			response = new ResponseEntity<String>(HttpStatus.OK);
 		} else {
 			fingerPrintLog.setResult(FingerPrintTools.FAILED_RESULT);
-			result.put("status", "404");
-			result.put("message", "Data not found");			
+			response = new ResponseEntity<String>(HttpStatus.FORBIDDEN);
 		}
 		
 		fingerPrintLogService.save(fingerPrintLog);	
 		
-		return result;
-//		if (FingerPrintTools.analize(mat.getMatrix())){
-//			return new ResponseEntity<>("",HttpStatus.OK);
-//		} 
-//	return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		return response;
 	}
 	
 	@PostMapping("/stats")
