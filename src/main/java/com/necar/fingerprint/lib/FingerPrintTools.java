@@ -1,6 +1,16 @@
 package com.necar.fingerprint.lib;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.sql.Date;
+import java.util.Calendar;
+
+import com.necar.fingerprint.beans.FingerPrintLog;
+
 // TODO: documentacion
 public class FingerPrintTools {
+	public static final Character SUCESS_RESULT = 'S';
+	public static final Character FAILED_RESULT = 'F';
 	private static int correctAdjacentLetterQuant = 4;
 	private static int correctMatchesToReach = 3;
 	private static int n_matrix = 6; // #Rows
@@ -90,6 +100,24 @@ public class FingerPrintTools {
 			}
 		}
 		return maxReached;
+	}
+
+	public static FingerPrintLog createFingerPrintLogBean(String[] matrix) {
+		FingerPrintLog fingerPrintLog = new FingerPrintLog();
+		fingerPrintLog.setnOrder(matrix.length);
+
+		for (int i = 1; i<=fingerPrintLog.getnOrder(); i++){			
+	        try {
+	        	Method method;
+	        	method = FingerPrintLog.class.getMethod("setRow"+i, String.class);	        
+				method.invoke(fingerPrintLog, matrix[i-1]);
+			} catch (NoSuchMethodException | SecurityException |
+					IllegalAccessException | IllegalArgumentException | 
+					InvocationTargetException e) {
+				e.printStackTrace();
+			}		        
+		}
+		return fingerPrintLog;
 	}
 
 }
