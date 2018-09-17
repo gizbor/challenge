@@ -38,8 +38,8 @@ public class FingerPrintLogDaoImpl implements FingerPrintLogDAO {
 
 	@Override
 	public List<FingerPrintLog> findAllFailed() {
-		fingerPrintLogJpaRepository.findAllByResult('F');
-		return null;
+		List<FingerPrintLog> r= fingerPrintLogJpaRepository.findAllByResult('F');
+		return r;
 	}
 
 }

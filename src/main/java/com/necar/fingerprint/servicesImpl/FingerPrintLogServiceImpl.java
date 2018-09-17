@@ -40,7 +40,7 @@ public class FingerPrintLogServiceImpl implements  FingerPrintLogService {
 		}
 		List<FingerPrintLog> failedList = fingerPrintLogDAO.findAllFailed();
 		if (failedList!=null){		
-			count_not_valid_fingerPrint = sucessfulList.size();
+			count_not_valid_fingerPrint = failedList.size();
 		}
 		Integer ratio = count_valid_fingerPrint;
 		if (count_not_valid_fingerPrint > 0) {
