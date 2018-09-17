@@ -34,9 +34,9 @@ public class FingerPrintTools {
 		for (int i = 0; i < n_matrix; i++) {
 			for (int j = 0; j < n_matrix; j++) {
 				matrix[i][j] = data[i].charAt(j);
-				System.out.print(matrix[i][j]);
+				/* System.out.print(matrix[i][j]); */
 			}
-			System.out.println("");
+			/* System.out.println(""); */
 		}
 		return matrix;
 	}
@@ -48,8 +48,7 @@ public class FingerPrintTools {
 	 * "correctAdjacentLetterQuant" caracteres dentro de la matriz, false en
 	 * caso contrario.
 	 */
-	public static boolean isFingerPrint(String[] data) {
-		System.out.println("Procesando...");
+	public static boolean isFingerPrint(String[] data) {		
 		char[][] matrix = convertToMatrix(data);
 
 		boolean validFingerprint = false;
